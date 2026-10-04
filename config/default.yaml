@@ -1,0 +1,52 @@
+day_trader_mode: false
+
+scanner:
+  min_volume: 500
+  min_open_interest: 200
+  max_spread_cents: 10
+  min_hours_to_expiry: 2
+  max_hours_to_expiry: 0  # 0 = no upper limit (day trader sets 24)
+  max_markets_per_cycle: 50
+  cooldown_hours: 4
+  cooldown_penalty: 0.5
+  score_jitter_pct: 0.1
+  categories: []  # empty = all categories
+  day_trader_categories:
+    - Economics
+    - Financials
+    - Climate and Weather
+
+claude:
+  model: "claude-sonnet-4-5-20250929"
+  max_concurrent: 3
+  cache_ttl_minutes: 30
+  max_tokens: 16000
+  temperature: 0.3
+
+strategy:
+  min_edge_threshold: 0.05
+  kelly_fraction: 0.25
+  min_confidence: 0.5
+  take_profit_percent: 30.0
+  stop_loss_percent: 50.0
+  re_eval_exit_edge: -0.03
+  max_hold_minutes: 0  # 0 = disabled (day trader sets 30)
+
+risk:
+  max_position_size_cents: 5000
+  max_total_exposure_cents: 50000
+  max_daily_loss_cents: 10000
+  max_positions: 20
+  max_single_order_cents: 2000
+  min_order_cents: 1000  # minimum $10 per trade
+  consecutive_loss_limit: 5
+  hourly_loss_limit_cents: 3000
+  api_error_rate_limit: 0.5
+
+execution:
+  stale_order_hours: 2
+  dry_run: true
+
+scheduler:
+  pipeline_interval_minutes: 30
+  portfolio_monitor_interval_minutes: 5

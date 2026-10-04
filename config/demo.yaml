@@ -1,0 +1,9 @@
+# Demo environment overrides
+execution:
+  dry_run: true
+
+risk:
+  max_position_size_cents: 5000
+  max_total_exposure_cents: 50000
+  max_daily_loss_cents: 10000
+  max_single_order_cents: 2000

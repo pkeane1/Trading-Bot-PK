@@ -1,0 +1,9 @@
+# Production environment overrides — start conservative
+execution:
+  dry_run: true  # MUST explicitly set to false after verification
+
+risk:
+  max_position_size_cents: 500
+  max_total_exposure_cents: 5000
+  max_daily_loss_cents: 1000
+  max_single_order_cents: 500

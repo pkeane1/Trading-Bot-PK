@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kalshi-bot"
+version = "0.1.0"
+description = "AI-powered trading bot for Kalshi prediction markets"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "websockets>=13.0",
+    "cryptography>=43.0",
+    "anthropic>=0.40",
+    "pydantic>=2.9",
+    "pydantic-settings>=2.6",
+    "pyyaml>=6.0",
+    "apscheduler>=3.10,<4",
+    "structlog>=24.0",
+    "tenacity>=9.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "respx>=0.22",
+    "ruff>=0.8",
+    "mypy>=1.13",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kalshi_bot"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
